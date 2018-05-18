@@ -28,10 +28,10 @@ def makeResponse(req):
     result = req.get("result")
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
-    date = parameters.get("date")
+    date = "2017-02-16 12:00:00"
     if city is None:
         return None
-    r=requests.get('http://samples.openweathermap.org/data/2.5/forecast?q='+city+'&appid=51f2eaab8e987edd87b1e2067094b53e')
+    r=requests.get('http://samples.openweathermap.org/data/2.5/forecast?q=kolkata,us&appid=b6907d289e10d714a6e88b30761fae22')
     json_object = r.json()
     weather=json_object['list']
     for i in range(0,30):
@@ -49,20 +49,3 @@ if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
     print("Starting app on port %d" % port)
     app.run(debug=False, port=port, host='0.0.0.0')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
